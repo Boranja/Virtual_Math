@@ -1,0 +1,66 @@
+body{
+  background: hsla(0,0%,96%,1);
+}
+.mynav {
+  padding: .5em 0 .4em 1em;
+  background: rgba(96, 227, 28, 1); 
+}
+
+.mynav .logo {
+  float:right;
+  margin: 3px 5px 0 0;
+}
+
+.mynav .navbar-nav > li > a {
+  color: #fff;
+}
+
+.mynav .navbar-nav > li > a:hover {
+  color: rgba(113, 113, 113, 1);
+} 
+
+.container.color_withe {
+  padding: .6em;
+  background: hsla(0,0%,98%,1);
+  box-shadow: 0 0 1px 0 rgba(0,0,0,.2), 0 0 0px 1px hsla(0,0%,100%,1) inset ;
+  border-radius: 4px;
+  
+}
+
+.panel-envio .row:first-of-type {
+  border-top:none;
+  padding-top: 0;
+}
+
+.panel-envio .row {
+  padding-top:.4em;
+  padding-bottom: .4em;
+  border-top:solid 1px hsla(0,0%,0%,.05);
+}
+
+.panel-envio label {
+  padding: 6px 0 0 0;
+  text-align: right;
+  display: block;
+}
+
+.panel-detalle >.panel-body {
+  padding:.3em;
+}
+
+.panel-detalle h2 {
+  padding:.4em;
+  margin: 0;
+  font-size:1.4em;
+  background: hsla(90,100%,50%,.15);
+  border-radius: 4px;
+}
+.panel-detalle h3 {
+  font-size:1.3em;
+  margin: .5em 0 .7em;
+}
+
+.panel-detalle +.btn {
+  font-size: 1.3em;
+  padding: .8em 0;
+}

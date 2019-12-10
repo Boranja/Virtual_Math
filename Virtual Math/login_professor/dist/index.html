@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Verificação</title>
+  <link rel="icon" href="https://media.giphy.com/media/Ui9mIvdH5rW9i/giphy.gifhttps://media.giphy.com/media/Ui9mIvdH5rW9i/giphy.gif" type="imagem/gif">
+
+  <link href="./js/verifica.js">
+  <link rel="stylesheet" href="./css/meta.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<head lang="pt-br">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <section id="validaCao" class="principalForm visivel" >
+        <section class="containerForm">
+            <section class="headerForm">
+                    <span> Seja bem-vindo </span>
+            </section>
+
+            <section class="requisitosForm">
+                É necessário que preencha todos os campos.
+            </section>
+            <section class="titleForm">
+                Inserção de dados
+            </section>
+            <form name="area51" id="area51" class="loginForm" id="formLogin">
+                <div class="label-float">
+                    <input placeholder="Código da loja" class="inputF" id="Siape_valida">
+                    <label class="labelF">Código do SIAPE</label>
+                </div>
+                <div class="label-float">
+                    <input placeholder="Usuário" class="inputF" id="docente_valida">
+                    <label class="labelF">Nome do Docente</label>
+                </div>
+
+            </form>
+            <section class="buttonsForm">
+                   <button onclick="Cadastrar_se()" class="botaoSair">
+                       Cadastrar
+                   </button>
+                    <button style="color: white;"  onclick="Validar()" class="botaoEntrar">
+                       <a class="decoracao" href="../../area_professor/dist/index.html">Validar</a>
+                    </button>
+
+            </section>
+             <center>
+             <a class="botaoSair" href="../../Home.html">Retornar</a>
+       </center>
+        </section>
+    </section>
+
+    <section id="cadastro_professor" class="principalForm invisivel">
+        <section class="containerForm">
+            <section class="headerForm">
+                    <span> Seja bem-vindo </span>
+            </section>
+
+            <section class="requisitosForm">
+                É necessário que preencha todos os campos.
+            </section>
+            <section class="titleForm">
+                Cadastro de dados
+            </section>
+            <form name="area51" id="area51" class="loginForm" id="formLogin">
+                <div class="label-float">
+                    <input placeholder="Código da loja" class="inputF" id="siape_register">
+                    <label class="labelF">Código do SIAPE</label>
+                </div>
+                <div class="label-float">
+                    <input placeholder="Usuário" class="inputF" id="docente_register">
+                    <label class="labelF">Nome do Docente</label>
+                </div>
+
+            </form>
+            <section class="buttonsForm">
+                    <a class="botaoSair" href="../../Home.html">Retornar</a>
+
+                    <button style="color: white;" onclick="Cadastrar_dados()" class="botaoEntrar">
+                        Cadastrar
+                    </button>
+            </section>
+        </section>
+    </section>
+
+        <section id="Perfil">
+
+        </section>
+
+        <script type="text/javascript">
+
+        class Pessoa{
+            constructor(){
+                this.siape;
+                this.nome;
+            }
+            salvar(siape, nome) {
+                this.siape = siape;
+                this.nome = nome;
+            }
+        }
+
+var banco_vetor = [];
+
+        class Banco_dados{
+            registrar(humano) {
+                if(localStorage.length == 0) {
+
+            banco_vetor.push(humano);
+            localStorage.setItem('Siape-registro',JSON.stringify(banco_vetor));
+
+                } else {
+
+            banco_vetor = JSON.parse(localStorage.getItem('Siape-registro'));
+            banco_vetor.push(humano);
+            localStorage.setItem('Siape-registro',JSON.stringify(banco_vetor));
+
+                }
+            }
+        }
+
+        function Cadastrar_dados() {
+            var humano = new Pessoa();
+            humano.salvar(siape_register.value, docente_register.value);
+            var bd = new Banco_dados();
+            bd.registrar(humano);
+            alert('Cadastrado com sucesso');
+
+            document.getElementById('validaCao').className = 'principalForm visivel';
+            document.getElementById('cadastro_professor').className = 'invisivel';
+
+        }
+        function Cadastrar_se() {
+             document.getElementById('validaCao').className = 'invisivel';
+            document.getElementById('cadastro_professor').className = 'principalForm visivel';
+        }
+
+
+        function Validar() {
+
+         var Siape_valida = document.getElementById('Siape_valida').value;
+         var Docente_valida = document.getElementById('docente_valida').value;
+         var acho =  0;
+
+            banco_vetor = JSON.parse(localStorage.getItem('Siape-registro'));
+
+            for(var i = 0; i<banco_vetor.length; i++) {
+
+                if((Siape_valida == banco_vetor[i].siape) && (Docente_valida == banco_vetor[i].nome)) {
+
+                    alert('Bem Vindo(a) '+banco_vetor[i].nome);
+                    acho = 1;
+                    Perfil()
+                }
+            }
+            if (acho == 0) {
+                alert('Os dados inseridos estão errados, Verifique-os!');
+            }
+
+        }
+
+        function Perfil() {
+
+            var perfil = document.getElementById('Perfil');
+
+            perfil.innerHTML = "<a href='../../../area_professor/disp/index.html'>g<a>"
+
+
+
+        }
+
+
+    </script>
+
+</body>
+<!-- partial -->
+</body>
+</html>
